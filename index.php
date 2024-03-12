@@ -89,3 +89,43 @@ echo '<hr>';
 
 echo url('teste');
 
+echo '<hr>';
+
+#printando valor de chave
+echo $_SERVER['HTTP_HOST'];
+
+echo '<hr>';
+
+#declaras array em php
+$meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril'];
+#ou
+#$meses = array();
+
+#elementos do array podem ser separados em várias linhas
+// $meses = [
+//     'Janeiro',
+//     'Fevereiro',
+//     'Março',
+//     'Abril'];
+
+#elementos de array podem ter chaves atribuidas da seguinte maneira
+// $meses = [
+//          1 => 'Janeiro',
+//          'SegundoMes' => 'Fevereiro',
+//          3 => 'Março',
+//          'QuartoMes' => 'Abril',
+//         'Maio'];
+
+var_dump($meses);
+
+echo '<hr>';
+#Percorrer arrays em php
+#$chave retorna o indice ou chave do valor, e $valor retorna o valor.
+foreach($meses as $chave => $valor){
+    echo "[{$chave}]".$valor.' ';
+}
+
+echo '<hr>';
+
+echo dataAtual();
+

@@ -151,3 +151,31 @@ function url(string $url): string
     return $ambiente.'/'.$url;
 
 }
+
+function dataAtual(): string
+{
+    $diaMes = date('d');
+    $diaSem = date('w');
+    $mes = date('n') - 1;
+    $ano = date('Y');
+
+    $diasSemana = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
+
+    $meses = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'];
+
+    $dataFormatada = $diasSemana[$diaSem].", {$diaMes} de {$meses[$mes]} de {$ano}.";
+   
+    return $dataFormatada;
+}
