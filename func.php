@@ -1,0 +1,153 @@
+<?php
+
+
+function formatarValor(float $valor = null): string
+{
+    return 'R$'.number_format($valor ?: 10, 2, ',','.');
+}
+
+function formatarNumero(int $numero = null): string
+{   
+
+    return number_format($numero ?: 0, 0, '.','.') ;
+}
+
+function greeting()
+{
+    $greeting = '';
+    $time = date('H');
+
+    if($time >= 0 && $time <= 5){
+        $greeting = 'Boa madrugada!';
+    }
+    elseif($time >= 6 && $time <= 12){
+        $greeting = 'Bom dia!';
+    }
+    elseif($time >= 13 AND $time <= 18){
+        $greeting = 'Boa tarde!';
+    }
+    else{
+        $greeting = "Boa noite!";
+    }
+
+    return $greeting;
+
+}
+
+/**
+ *  Resume um texto  utilizando como parâmetros uma string de texto, um valor int de limite e um outro valor string que será colocado no fim do resumo
+ * 
+ * @param string $texto texto para resumir
+ * @param int $limite limite de caracteres
+ * @param string $continue OPCIONAL o que deve ser exibido no fim do resumo
+ * @return string Retorna o texto resumido
+*/
+function resumirTexto(string $texto, int $limite, string $continue = '...'): String
+{
+    $cleanText = trim($texto);
+
+    if(strlen($cleanText) <= $limite){
+        return $cleanText;
+    }
+
+    $resumirTexto = substr($cleanText, 0, strrpos(substr($cleanText, 0, $limite), ''));
+
+    return $resumirTexto.$continue;
+}
+
+function retornaPreco(int $preco, $moeda = "R$:"): String
+{
+    return "{$moeda}{$preco}";
+}
+
+function retornaDataHora()
+{
+    $data = date('d/m/Y H:i:s');
+    return $data;
+}
+
+function contarTempo(string $data)
+{
+    $now = strtotime(date('Y-m-d H:i:s'));
+    $time = strtotime($data);
+    $diff = $now - $time;
+
+    $segundos = $diff;
+    $minutos = round($diff/60); 
+    $horas = round($diff/3600);
+    $dias = round($diff/86400);
+    $semanas = round($diff/604800);
+    $meses = round($diff/2419200);
+    $anos = round($diff/29030400);
+
+    if($time > $now){
+        print("O FUTURO É PICA!");
+    }else{
+        if($segundos <= 60){
+            return 'Just now';
+        }elseif ($minutos <= 60){
+            return $minutos == 1 ? 'Há 1 minuto': "Há {$minutos} minutos"; 
+        }elseif($horas <= 24){
+            return $horas == 1 ? 'Há uma hora': "Há {$horas} horas";
+        }elseif($dias <= 7){
+            return $dias == 1 ? '1 dia atrás': "{$dias} dias atrás";
+        }elseif($semanas <= 4){
+            return $semanas == 1 ? 'Há uma semana': "{$semanas} semanas atrás";
+        }elseif($meses <= 12){
+            return $meses == 1 ? 'Um mês atrás': "{$meses} meses atrás";
+        }else{
+            return $anos == 1 ? 'Um ano atrás': "{$anos} anos atrás";
+        }
+    }
+}
+
+function validarEmail(string $email): String
+{
+    $valid = filter_var($email, FILTER_VALIDATE_EMAIL);
+    return $valid != null ? "{$email} é um email valido" : "{$email} não pode ser considerado um email válido";
+    
+}
+
+function validarUrl(string $url): bool
+{
+    if (strlen($url) < 10){
+        return false;
+    }
+
+    if (!str_contains($url, '.')){
+        return false;
+    }
+
+    if (str_contains($url, 'http://') or str_contains($url, 'https://')){
+        return true;
+    }
+
+    return false;
+}
+
+function validarUrlFiltro(string $url): bool
+{
+    return filter_var($url, FILTER_VALIDATE_URL);
+}
+
+function localhost(): bool
+{
+    $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_DEFAULT);
+    if($servidor == 'localhost'){
+        return true;
+    }
+    return false;
+}
+
+function url(string $url): string
+{
+    $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
+    $ambiente = ($servidor == 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
+
+    if (str_starts_with($url, '/')){
+        return $ambiente.$url;
+    }
+
+    return $ambiente.'/'.$url;
+
+}
