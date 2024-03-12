@@ -129,3 +129,9 @@ echo '<hr>';
 
 echo dataAtual();
 
+echo '<hr>';
+
+echo 'String Original = '.$strTeste = 'Águia  test@ndo      maçã{}{}{}//////////-+';
+echo '<br>';
+echo 'String Slugada = '.slugifier($strTeste);
+

@@ -179,3 +179,19 @@ function dataAtual(): string
    
     return $dataFormatada;
 }
+
+#Slug Urls
+function slugifier(string $string): string
+{
+    $mapa['a'] = 'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ@{}/-+';
+
+    $mapa['b'] = 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUYa     ';
+
+    $slug = strtr(mb_convert_encoding($string, 'ISO-8859-1', 'UTF-8'), mb_convert_encoding($mapa['a'], 'ISO-8859-1', 'UTF-8'), mb_convert_encoding($mapa['b'], 'ISO-8859-1', 'UTF-8'));
+    $slug = strip_tags(trim($slug));
+    $slug = str_replace(' ', '_', $slug);
+    $slug = str_replace(['_____','____','___', '__'], '_', $slug);
+
+
+    return strtolower($slug);
+}
