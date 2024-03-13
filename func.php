@@ -12,22 +12,36 @@ function formatarNumero(int $numero = null): string
     return number_format($numero ?: 0, 0, '.','.') ;
 }
 
+#If e Switch
 function greeting()
 {
     $greeting = '';
     $time = date('H');
 
-    if($time >= 0 && $time <= 5){
-        $greeting = 'Boa madrugada!';
-    }
-    elseif($time >= 6 && $time <= 12){
-        $greeting = 'Bom dia!';
-    }
-    elseif($time >= 13 AND $time <= 18){
-        $greeting = 'Boa tarde!';
-    }
-    else{
-        $greeting = "Boa noite!";
+    // if($time >= 0 && $time <= 5){
+    //     $greeting = 'Boa madrugada!';
+    // }
+    // elseif($time >= 6 && $time <= 12){
+    //     $greeting = 'Bom dia!';
+    // }
+    // elseif($time >= 13 AND $time <= 18){
+    //     $greeting = 'Boa tarde!';
+    // }
+    // else{
+    //     $greeting = "Boa noite!";
+    // }
+    switch ($time){
+        case $time >= 0 && $time <= 5:
+            $greeting = 'Boa madrugada!';
+            break;
+        case $time >= 6 && $time <= 12:
+            $greeting = 'Bom dia!';
+            break;
+        case $time >= 13 AND $time <= 18:
+            $greeting = 'Boa tarde!';
+            break;
+        default:
+            $greeting = "Boa noite!";
     }
 
     return $greeting;
@@ -195,3 +209,5 @@ function slugifier(string $string): string
 
     return strtolower($slug);
 }
+
+
