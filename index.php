@@ -139,3 +139,33 @@ echo '<hr>';
 
 echo greeting();
 
+echo '<hr>';
+
+#Estruturas de Repetição em PHP
+
+#WHILE
+$numero = 1;
+
+while($numero <= 10){
+    echo $numero++;
+}
+
+echo '<hr>';
+#FOR
+
+for($i = 1; $i <=10; $i++){
+    echo ($i % 2 == 0 ? $i.' PAR': $i.' IMPAR').'<br>';
+}
+
+echo '<hr>';
+
+$num = 9;
+
+for($i = 1; $i<=10; $i++){
+    $mult = $num*$i;
+    echo "{$num} x {$i} = {$mult}".'<br>';
+}
+
+
+
+

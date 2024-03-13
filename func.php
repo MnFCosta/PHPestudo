@@ -18,6 +18,7 @@ function greeting()
     $greeting = '';
     $time = date('H');
 
+    #IF
     // if($time >= 0 && $time <= 5){
     //     $greeting = 'Boa madrugada!';
     // }
@@ -30,19 +31,35 @@ function greeting()
     // else{
     //     $greeting = "Boa noite!";
     // }
-    switch ($time){
-        case $time >= 0 && $time <= 5:
-            $greeting = 'Boa madrugada!';
-            break;
-        case $time >= 6 && $time <= 12:
-            $greeting = 'Bom dia!';
-            break;
-        case $time >= 13 AND $time <= 18:
-            $greeting = 'Boa tarde!';
-            break;
-        default:
-            $greeting = "Boa noite!";
-    }
+    
+    #SWITCH
+    // switch ($time){
+    //     case $time >= 0 && $time <= 5:
+    //         $greeting = 'Boa madrugada!';
+    //         break;
+    //     case $time >= 6 && $time <= 12:
+    //         $greeting = 'Bom dia!';
+    //         break;
+    //     case $time >= 13 AND $time <= 18:
+    //         $greeting = 'Boa tarde!';
+    //         break;
+    // //     default:
+    //         $greeting = "Boa noite!";
+    // }
+    #MATCH
+    #EX1
+    /* $greeting = match($time){
+        '0', '1', '2', '3','4','5' => 'Boa madrugada!',
+        '6', '7', '8', '9', '10', '11', '12' => 'Bom dia!',
+        '13', '14', '15', '16', '17', '18', => 'Boa tarde!',
+        default => 'Boa noite!',
+    };   */ 
+    $greeting= match(true){
+        $time >=0 AND $time <= 5 => 'Boa madrugada!',
+        $time >=6 AND $time <= 12 => 'Bom dia!',
+        $time >=13 AND $time <= 18 => 'Boa tarde!',
+        default => 'Boa noite!',
+    };
 
     return $greeting;
 
