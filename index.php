@@ -166,6 +166,15 @@ for($i = 1; $i<=10; $i++){
     echo "{$num} x {$i} = {$mult}".'<br>';
 }
 
+echo '<hr>';
+
+#REGEX
+$cpf = '056.539.660-96';
+
+echo validarCPF($cpf) == true ? "CPF válido!" : "CPF inválido";
+
+
+
 
 
 

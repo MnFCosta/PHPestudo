@@ -33,27 +33,27 @@ function greeting()
     // }
     
     #SWITCH
-    // switch ($time){
-    //     case $time >= 0 && $time <= 5:
-    //         $greeting = 'Boa madrugada!';
-    //         break;
-    //     case $time >= 6 && $time <= 12:
-    //         $greeting = 'Bom dia!';
-    //         break;
-    //     case $time >= 13 AND $time <= 18:
-    //         $greeting = 'Boa tarde!';
-    //         break;
-    // //     default:
-    //         $greeting = "Boa noite!";
-    // }
+    switch ($time){
+        case $time >= 0 && $time <= 5:
+            $greeting = 'Boa madrugada!';
+            break;
+        case $time >= 6 && $time <= 12:
+            $greeting = 'Bom dia!';
+            break;
+        case $time >= 13 AND $time <= 18:
+            $greeting = 'Boa tarde!';
+            break;
+        default:
+            $greeting = "Boa noite!";
+    }
     #MATCH
     #EX1
-    /* $greeting = match($time){
+    $greeting = match($time){
         '0', '1', '2', '3','4','5' => 'Boa madrugada!',
         '6', '7', '8', '9', '10', '11', '12' => 'Bom dia!',
         '13', '14', '15', '16', '17', '18', => 'Boa tarde!',
         default => 'Boa noite!',
-    };   */ 
+    };   
     $greeting= match(true){
         $time >=0 AND $time <= 5 => 'Boa madrugada!',
         $time >=6 AND $time <= 12 => 'Bom dia!',
@@ -225,6 +225,21 @@ function slugifier(string $string): string
 
 
     return strtolower($slug);
+}
+
+function limparCPF(string $num): string
+{
+    return preg_replace('/[^0-9]/', '', $num);
+}
+
+function validarCPF(string $cpf): bool
+{
+    $cpf = limparCPF($cpf);
+
+    if(strlen($cpf) != 11 or preg_match('/(\d)\1{10}/', $cpf)){
+        return false;
+    }
+    return true;
 }
 
 
