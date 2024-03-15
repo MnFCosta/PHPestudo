@@ -1,3 +1,4 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <?php
 //Página default do sistema
 #Teste
@@ -8,6 +9,8 @@ Chatuco
 
 require_once 'sistema/configuracao.php';
 include_once 'func.php';
+include_once './sistema/Classes/Mensagem.php';
+
 //declare(strict_types = 1)
 
 $text = strip_tags("<h1>Texto</h1> para resumir mt brabo rsrsrs");
@@ -172,6 +175,14 @@ echo '<hr>';
 $cpf = '056.539.660-96';
 
 echo validarCPF($cpf) == true ? "CPF válido!" : "CPF inválido";
+
+echo '<hr>';
+#Classes em PHP
+
+$msg = new Mensagem();
+echo $msg->sucesso('Mensagem de sucesso')->renderizar();
+
+
 
 
 
