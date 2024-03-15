@@ -5,16 +5,21 @@ class Mensagem
    private $texto; 
    private $css;
 
+   public function __toString()
+   {
+      return $this->renderizar();
+   }
+
    public function sucesso(string $mensagem): Mensagem
    {
-      $this->css = 'alert alert-success';
+      $this->css = 'color:green;';
       $this->texto = $this->filtrar($mensagem);
       return $this;
    }
 
    public function renderizar(): string
    {
-      return "<div< class='{$this->css}'>{$this->texto}</div>";
+      return "<div style='{$this->css}'>{$this->texto}</div>";
    }
 
    private function filtrar(string $mensagem): string

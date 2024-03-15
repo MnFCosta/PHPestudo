@@ -182,6 +182,14 @@ echo '<hr>';
 $msg = new Mensagem();
 echo $msg->sucesso('Mensagem de sucesso')->renderizar();
 
+echo '<hr>';
+
+#Métodos mágicos
+
+#echo (new Mensagem())->sucesso('SUCESSO!!!!!!!!!')->renderizar();
+
+
+echo (new Mensagem())->sucesso("SUCESSO!!!!!!!!");
 
 
 
