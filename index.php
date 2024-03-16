@@ -8,8 +8,13 @@ Chatuco
 */
 
 require_once 'sistema/configuracao.php';
-include_once 'func.php';
-include_once './sistema/Classes/Mensagem.php';
+include_once './sistema/Core/Helpers.php';
+include_once './sistema/Core/Mensagem.php';
+
+#Usar classe com namespace
+use \sistema\Core\Helpers;
+#Usar classe com namespace e alias
+use \sistema\Classes\Mensagem as msg;
 
 //declare(strict_types = 1)
 
@@ -22,6 +27,8 @@ echo '<hr>';
 echo $oco = strrpos($text, 'e');
 echo '<hr>';
 
+$helper = new Helpers();
+
 #$preco = 50;
 
 #debug de variável
@@ -30,7 +37,7 @@ echo '<hr>';
 #echo retornaPreco($preco);
 #echo "<br>";
 
-echo resumirTexto($text, 15, '...');
+echo $helper->resumirTexto($text, 15, '...');
 
 echo '<hr>';
 
@@ -52,29 +59,29 @@ echo $valor ?: 0;
 
 echo '<hr>';
 
-echo formatarValor();
+echo $helper->formatarValor();
 
 echo '<hr>';
 
-echo formatarNumero(200);
+echo $helper->formatarNumero(200);
  
 echo '<hr>';
 
-echo retornaDataHora();
+echo $helper->retornaDataHora();
 
 echo '<hr>';
 
-echo contarTempo('2024-03-09 11:33:08');
+echo $helper->contarTempo('2024-03-09 11:33:08');
 
 echo '<hr>';
 
-echo validarEmail('teste@gmail.com');
+echo $helper->validarEmail('teste@gmail.com');
 
 echo '<hr>';
 
 $url = 'http://teste.com.br';
-var_dump(validarUrl($url)); 
-var_dump(validarUrlFiltro($url));
+var_dump($helper->validarUrl($url)); 
+var_dump($helper->validarUrlFiltro($url));
 
 echo '<hr>'; 
 
@@ -86,11 +93,11 @@ var_dump($_SERVER);
 
 echo '<hr>';
 
-var_dump(localhost());
+var_dump($helper->localhost());
 
 echo '<hr>';
 
-echo url('teste');
+echo $helper->url('teste');
 
 echo '<hr>';
 
@@ -130,17 +137,18 @@ foreach($meses as $chave => $valor){
 
 echo '<hr>';
 
-echo dataAtual();
+echo $helper->dataAtual();
 
 echo '<hr>';
 
 echo 'String Original = '.$strTeste = 'Águia  test@ndo      maçã{}{}{}//////////-+';
 echo '<br>';
-echo 'String Slugada = '.slugifier($strTeste);
+echo 'String Slugada = '.$helper->slugifier($strTeste);
 
 echo '<hr>';
 
-echo greeting();
+#Chamada de método estático NomeClasse::
+echo Helpers::greeting();
 
 echo '<hr>';
 
@@ -174,12 +182,12 @@ echo '<hr>';
 #REGEX
 $cpf = '056.539.660-96';
 
-echo validarCPF($cpf) == true ? "CPF válido!" : "CPF inválido";
+echo $helper->validarCPF($cpf) == true ? "CPF válido!" : "CPF inválido";
 
 echo '<hr>';
 #Classes em PHP
 
-$msg = new Mensagem();
+$msg = new msg();
 echo $msg->sucesso('Mensagem de sucesso')->renderizar();
 
 echo '<hr>';
@@ -188,8 +196,7 @@ echo '<hr>';
 
 #echo (new Mensagem())->sucesso('SUCESSO!!!!!!!!!')->renderizar();
 
-
-echo (new Mensagem())->sucesso("SUCESSO!!!!!!!!");
+echo (new msg())->sucesso("SUCESSO!!!!!!!!");
 
 
 

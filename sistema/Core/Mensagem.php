@@ -1,4 +1,7 @@
 <?php
+#Namespaces
+
+namespace sistema\Classes;
 
 class Mensagem
 {
