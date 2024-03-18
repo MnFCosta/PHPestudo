@@ -15,6 +15,5 @@
             "name": "Manoel Costa"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "dev"
 }

@@ -209,3 +209,9 @@ echo '<hr>';
 #devemos passar tais parâmetros durante o instanciamento da classe.
 $controlador = new Controlador("Batata");
 
+echo '<hr>';
+
+#Utilizando formatador de CPF baixado pelo composer
+/* $document = new \Bissolli\ValidadorCpfCnpj\CPF('546.897.210-76');
+var_dump($document->isValid()); */
+
