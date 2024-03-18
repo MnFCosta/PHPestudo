@@ -7,14 +7,20 @@ Pitoco
 Chatuco
 */
 
-require_once 'sistema/configuracao.php';
+#Carregando classes manualmente sem o autoload
+/* require_once 'sistema/configuracao.php';
 include_once './sistema/Core/Helpers.php';
 include_once './sistema/Core/Mensagem.php';
+include_once './sistema/Core/Controlador.php'; */
+
+#autoload do composer, carrega classes automáticamente
+require 'vendor/autoload.php';
 
 #Usar classe com namespace
 use \sistema\Core\Helpers;
+use \sistema\Core\Controlador;
 #Usar classe com namespace e alias
-use \sistema\Classes\Mensagem as msg;
+use \sistema\Core\Mensagem as msg; 
 
 //declare(strict_types = 1)
 
@@ -26,7 +32,6 @@ echo $resumo = substr($text, 2, 15);
 echo '<hr>';
 echo $oco = strrpos($text, 'e');
 echo '<hr>';
-
 $helper = new Helpers();
 
 #$preco = 50;
@@ -194,13 +199,13 @@ echo '<hr>';
 
 #Métodos mágicos
 
-#echo (new Mensagem())->sucesso('SUCESSO!!!!!!!!!')->renderizar();
+echo (new msg())->sucesso('SUCESSO!!!!!!!!!')->renderizar();
 
 echo (new msg())->sucesso("SUCESSO!!!!!!!!");
+echo '<hr>';
 
-
-
-
-
-
+#Construct
+#Pelo método construtor __construct(), quando uma instancia da classe Controlador é iniciada, o método __construct é chamado, logo, caso este método tenha parâmetros
+#devemos passar tais parâmetros durante o instanciamento da classe.
+$controlador = new Controlador("Batata");
 

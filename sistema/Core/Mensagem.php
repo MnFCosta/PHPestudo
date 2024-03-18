@@ -1,7 +1,7 @@
 <?php
 #Namespaces
 
-namespace sistema\Classes;
+namespace sistema\Core;
 
 class Mensagem
 {
