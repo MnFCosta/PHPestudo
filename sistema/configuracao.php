@@ -9,5 +9,6 @@ define('SITE_NAME', 'NOMESITE');
 define('SITE_DESCRICAO', 'Descrição do site'); 
 define('URL_PRODUCAO', 'http://teste.com.br');
 define('URL_DESENVOLVIMENTO', 'http://localhost/blog');
+define('URL_SITE', 'blog/');
 
 const SITE_NOME = 'SITESTE';

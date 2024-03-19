@@ -15,6 +15,7 @@ include_once './sistema/Core/Controlador.php'; */
 
 #autoload do composer, carrega classes automáticamente
 require 'vendor/autoload.php';
+require 'rotas.php';
 
 #Usar classe com namespace
 use \sistema\Core\Helpers;
