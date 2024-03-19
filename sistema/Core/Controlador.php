@@ -2,10 +2,14 @@
 
 namespace sistema\Core;
 
+use sistema\Suporte\Template;
+
 class Controlador
 {
-    public function __construct(string $tema)
+    protected Template $template;
+
+    public function __construct(string $diretorio)
     {
-        echo "Controlador iniciado<br> o tema é {$tema}";
+        $this->template = new Template($diretorio);
     }
 }

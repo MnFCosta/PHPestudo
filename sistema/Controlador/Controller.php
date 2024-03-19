@@ -2,15 +2,23 @@
 
 namespace sistema\Controlador;
 
-class Controller
+use sistema\Core\Controlador;
+
+class Controller extends Controlador
 {
+
+    public function __construct()
+    {
+        parent::__construct('templates/site/views');
+    }
+
     public function index(): void
     {
-        echo 'Index';
+        echo $this->template->renderizar('index.html', ['titulo' => 'TESTE DE TEMPLATE COM TWIG']);
     }
 
     public function sobre(): void
     {
-        echo 'Sobre';
+        echo $this->template->renderizar('sobre.html', ['textosobre' => 'TEXTO SOBRE O SITE']);
     }
 }
