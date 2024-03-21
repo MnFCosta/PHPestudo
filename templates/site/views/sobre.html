@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOBRE</title>
-</head>
+{% block titulo%}SOBRE{% endblock %}
 
-<body>
-    <p>DATA: {{dataAtual()}}</p>
-    <h1>SOBRE: {{textosobre}}</h1>
-</body>
-
-</html>
+{% block conteudo%}
+<p>DATA: {{dataAtual()}}</p>
+<h1>SOBRE: {{textosobre}}</h1>
+{% endblock %}

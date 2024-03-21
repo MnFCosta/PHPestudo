@@ -14,7 +14,7 @@ class Controller extends Controlador
 
     public function index(): void
     {
-        echo $this->template->renderizar('index.html', ['titulo' => 'TESTE DE TEMPLATE COM TWIG']);
+        echo $this->template->renderizar('index.html', ['titulo' => 'Página Inicial']);
     }
 
     public function sobre(): void
