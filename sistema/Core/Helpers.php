@@ -2,6 +2,8 @@
 
 namespace sistema\Core;
 
+use Exception;
+
 class Helpers
 {
 
@@ -143,9 +145,11 @@ class Helpers
         
     }
 
-    function validarUrl(string $url): bool
+    static function validarUrl(string $url): bool
     {
         if (strlen($url) < 10){
+            #Excessão em php
+            throw new Exception('Url precisa ter 10 ou mais dígitos');
             return false;
         }
 
@@ -245,6 +249,14 @@ class Helpers
             return false;
         }
         return true;
+    }
+
+    public static function redirecionar(string $url = null): void
+    {
+        header('HTTP/1.1 302 Found');
+        $local = ($url ? self::url($url) : self::url());
+        header("Location: {$local}");
+        exit();
     }
 
 

@@ -6,3 +6,13 @@
 require 'vendor/autoload.php';
 require 'rotas.php';
 
+#try catch em php
+/* use sistema\Core\Helpers;
+
+try{
+    echo(Helpers::validarUrl("dasdasd"));
+}catch (Exception $e){
+    echo $e->getMessage();
+}finally{
+    echo '<br>Validação Finalizada';
+} */

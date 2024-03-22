@@ -1,10 +1,17 @@
 <?php
 
+use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
 use Pecee\SimpleRouter\SimpleRouter;
+use sistema\Core\Helpers;
 
-SimpleRouter::setDefaultNamespace('sistema\Controlador');
-
-SimpleRouter::get(URL_SITE, 'Controller@index');
-SimpleRouter::get(URL_SITE.'sobre', 'Controller@sobre');
-
-SimpleRouter::start();
+try{
+    SimpleRouter::setDefaultNamespace('sistema\Controlador');
+    
+    SimpleRouter::get(URL_SITE, 'Controller@index');
+    SimpleRouter::get(URL_SITE.'404', 'Controller@erro');
+    SimpleRouter::get(URL_SITE.'sobre', 'Controller@sobre');
+    
+    SimpleRouter::start();
+}catch (NotFoundHttpException $e){
+    Helpers::redirecionar('404');
+}
