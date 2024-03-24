@@ -14,5 +14,18 @@ try{
 }catch (Exception $e){
     echo $e->getMessage();
 }finally{
-    echo '<br>Validação Finalizada';
+    echo '<br>Validação Finalizada';{
+        echo $post
+    }
 } */
+
+#conexão com db em PHP
+
+use sistema\Modelo\PostModelo;
+
+$posts = (new PostModelo())->read();
+
+foreach($posts as $post){
+    echo $post->titulo.': ';
+    echo $post->texto.'<br>';
+}

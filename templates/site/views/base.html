@@ -14,7 +14,7 @@
     {% include 'topo.html'%}
 
     {% if titulo %}
-        <h1>{{titulo}}</h1>
+        <h1>{{titulo|upper}}</h1>
     {% else %}
         <h1>BOTA UM TITULO :(</h1>
     {% endif %}
