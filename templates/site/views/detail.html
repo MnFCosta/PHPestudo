@@ -7,17 +7,20 @@
 {% block conteudo%}
 
     <div class='container my-5'>
-        <div class = "row">
-            {% for post in posts%}
                 <div class = "col-md-3">
                     <div class="card mb-2" style="width: 20rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><a href = "{{ url('post/'~ post.id) }}"> {{post.titulo}}</a></h5>
+                            <h5 class="card-title">{{post.titulo}}</h5>
+                                <p class="card-text">ID: {{post.id}}</p>
+                                {% if post.status == 1%}
+                                    <p class="card-text">STATUS: ATIVO</p>
+                                {% else %}
+                                    <p class="card-text">STATUS: INATIVO</p>
+                                {% endif %}
                                 <p class="card-text">{{post.texto}}</p>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
         </div>  
     </div>
 

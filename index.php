@@ -21,11 +21,3 @@ try{
 
 #conexão com db em PHP
 
-use sistema\Modelo\PostModelo;
-
-$posts = (new PostModelo())->read();
-
-foreach($posts as $post){
-    echo $post->titulo.': ';
-    echo $post->texto.'<br>';
-}
