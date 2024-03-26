@@ -1,0 +1,9 @@
+<h1 class='text-center fw-bold'>
+    CATEGORIAS
+</h1>
+
+<ul class = 'list-group list-group-flush'>
+    {% for categoria in categorias %}
+    <li><a href = "{{ url('postcategoria/' ~categoria.id) }}"> {{categoria.titulo}} </a></li>
+    {% endfor %}
+</ul> 

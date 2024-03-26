@@ -3,6 +3,11 @@
 {% block titulo%}SOBRE{% endblock %}
 
 {% block conteudo%}
-<p>DATA: {{dataAtual()}}</p>
-<h1>SOBRE: {{textosobre}}</h1>
+    <p>DATA: {{dataAtual()}}</p>
+    <h1>SOBRE: {{textosobre}}</h1><br>
+    <form method = "get">
+        <input type='text' name="nome"></input><br><br>
+        <input type='text' name="sobrenome"></input><br><br>
+        <input type='submit'></input><br>
+    </form>
 {% endblock %}

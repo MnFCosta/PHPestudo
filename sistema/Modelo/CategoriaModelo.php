@@ -4,11 +4,11 @@ namespace sistema\Modelo;
 
 use sistema\Core\Conexao;
 
-class PostModelo
+class CategoriaModelo
 {
     public function read(): array
     {   
-        $query = "SELECT * FROM posts";
+        $query = "SELECT * FROM categorias ORDER BY titulo ASC";
         $stmt = Conexao::getInstance()->query($query); 
 
         $retorno = $stmt->fetchAll();
@@ -19,20 +19,10 @@ class PostModelo
     public function readId(int $id): bool|object
     {   
         $where = "WHERE id = {$id}";
-        $query = "SELECT * FROM posts {$where}";
+        $query = "SELECT * FROM categorias {$where}";
         $stmt = Conexao::getInstance()->query($query); 
 
         $retorno = $stmt->fetch();
-
-        return $retorno;
-    }
-
-    public function readcategoria(int $id): array
-    {   
-        $query = "SELECT * FROM posts WHERE categoria_id = {$id}";
-        $stmt = Conexao::getInstance()->query($query); 
-
-        $retorno = $stmt->fetchAll();
 
         return $retorno;
     }

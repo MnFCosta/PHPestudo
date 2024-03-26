@@ -38,6 +38,11 @@ class Template
                 new \Twig\TwigFunction('dataAtual', function(){
                     return Helpers::dataAtual();
                 })
+            ),
+            $this->twig->addFunction(
+                new \Twig\TwigFunction('resumirTexto', function(string $texto, int $limite, string $continuar){
+                    return Helpers::resumirTexto($texto,$limite,$continuar);
+                })
             )
             
         );

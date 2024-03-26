@@ -79,7 +79,7 @@ class Helpers
      * @param string $continue OPCIONAL o que deve ser exibido no fim do resumo
      * @return string Retorna o texto resumido
     */
-    function resumirTexto(string $texto, int $limite, string $continue = '...'): String
+    public static function resumirTexto(string $texto, int $limite, string $continue = '...'): String
     {
         $cleanText = trim($texto);
 

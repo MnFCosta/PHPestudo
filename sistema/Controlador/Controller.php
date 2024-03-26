@@ -4,6 +4,7 @@ namespace sistema\Controlador;
 
 use sistema\Core\Controlador;
 use sistema\Modelo\PostModelo;
+use sistema\Modelo\CategoriaModelo;
 use sistema\Core\Helpers;
 
 class Controller extends Controlador
@@ -18,7 +19,7 @@ class Controller extends Controlador
     {
         $posts = (new PostModelo)->read();
 
-        echo $this->template->renderizar('index.html', ['titulo' => 'Página Inicial', 'posts' => $posts]);
+        echo $this->template->renderizar('index.html', ['titulo' => 'Página Inicial', 'posts' => $posts, 'categorias' => (new CategoriaModelo)->read()]);
     }
 
     public function sobre(): void
@@ -40,5 +41,17 @@ class Controller extends Controlador
         }
 
         echo $this->template->renderizar('detail.html', ['titulo' => "Post {$id}", 'post' => $post]);
+    }
+
+    public function postcategoria(int $id): void
+    {
+        $posts= (new PostModelo)->readcategoria($id);
+        $categoria = new CategoriaModelo;
+
+        if (!$posts){
+            Helpers::redirecionar('404');
+        }
+
+        echo $this->template->renderizar('categoria.html', ['titulo' => 'Posts sobre '.$categoria->readId($id)->titulo, 'posts' => $posts, 'categorias' => $categoria->read()]);
     }
 } 

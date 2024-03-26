@@ -22,8 +22,8 @@ class Conexao
             }catch(PDOException $e){
                 die('Erro de conexão com a database'.$e->getMessage());
             }
-            return self::$instancia;
         }
+        return self::$instancia;
     }
 
     protected function __construct()
