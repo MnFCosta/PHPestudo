@@ -10,9 +10,11 @@ use sistema\Core\Helpers;
 class Controller extends Controlador
 {
 
+    
     public function __construct()
     {
         parent::__construct('templates/site/views');
+
     }
 
     public function index(): void
@@ -53,5 +55,22 @@ class Controller extends Controlador
         }
 
         echo $this->template->renderizar('categoria.html', ['titulo' => 'Posts sobre '.$categoria->readId($id)->titulo, 'posts' => $posts, 'categorias' => $categoria->read()]);
+    }
+
+    public function buscar(): void
+    {
+        $busca = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        $categoria = new CategoriaModelo;
+
+        if (isset($busca)){
+            $posts = (new PostModelo)->buscar($busca['busca']);
+            if($posts){
+                $titulo = "Posts que contém {$busca['busca']}";
+            }else{
+                $titulo = "Nenhum post contém {$busca['busca']}!";
+            }
+        }
+        
+        echo $this->template->renderizar('categoria.html', ['titulo'=>$titulo,'posts' => $posts, 'categorias' => $categoria->read()]);
     }
 } 

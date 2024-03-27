@@ -15,9 +15,9 @@
                     </ul>
                 </div>
             </ul>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-                    aria-label="Search">
+            <form action='{{ url ('buscar') }}' method = 'post' class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" name='busca' class="form-control form-control-dark text-bg-light" placeholder="Buscar..." aria-label="Search">
+                <input type='submit' class="btn btn-outline-light me-2">
             </form>
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
