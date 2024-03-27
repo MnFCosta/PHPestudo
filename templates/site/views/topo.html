@@ -15,14 +15,20 @@
                     </ul>
                 </div>
             </ul>
-            <form action='{{ url ('buscar') }}' method = 'post' class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            {# Campo de busca sem ajax/jquery #}
+            {# <form action='{{ url ('buscar') }}' method = 'post' class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" name='busca' class="form-control form-control-dark text-bg-light" placeholder="Buscar..." aria-label="Search">
-                <input type='submit' class="btn btn-outline-light me-2">
+                <input type='submit' class="btn btn-outline-light me-2"> 
+            </form> #}
+            {# Campo de busca com Ajax/Jquery #}
+            <form data-url-busca='{{ url ('buscar') }}' class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" name='busca' id='busca' class="form-control form-control-dark text-bg-light" placeholder="Buscar..." aria-label="Search">
             </form>
-            <div class="text-end">
+            {# <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
                 <button type="button" class="btn btn-warning">Sign-up</button>
-            </div>
+            </div> #}
         </div>
+            <div class = 'my-3' id='buscaResultado'></div>
     </div>
 </header>

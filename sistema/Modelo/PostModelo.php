@@ -38,7 +38,7 @@ class PostModelo
     }
 
     public function buscar(string $texto)
-    {
+    {   
         $query = "SELECT * FROM posts WHERE titulo LIKE '%{$texto}%'";
         $db = Conexao::getInstance()->query($query);
         $resultado = $db->fetchAll();

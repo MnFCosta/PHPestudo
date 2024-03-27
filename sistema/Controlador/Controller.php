@@ -57,7 +57,8 @@ class Controller extends Controlador
         echo $this->template->renderizar('categoria.html', ['titulo' => 'Posts sobre '.$categoria->readId($id)->titulo, 'posts' => $posts, 'categorias' => $categoria->read()]);
     }
 
-    public function buscar(): void
+    #Busca sem jQuery
+    /* public function buscar(): void
     {
         $busca = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         $categoria = new CategoriaModelo;
@@ -72,5 +73,21 @@ class Controller extends Controlador
         }
         
         echo $this->template->renderizar('categoria.html', ['titulo'=>$titulo,'posts' => $posts, 'categorias' => $categoria->read()]);
+    } */
+
+    public function buscar(): void
+    {
+        $busca = filter_input(INPUT_POST, 'busca', FILTER_DEFAULT);
+
+        if (isset($busca)){
+            $posts = (new PostModelo)->buscar($busca);
+
+            foreach ($posts as $post){
+                echo $post->titulo.'<hr>';
+            }
+        }
+        
+
     }
+
 } 
